@@ -14,7 +14,6 @@ const ExpenseItem = (props) => {
   // 나중에 새로운 title을 설정하기 위해 호출할 수 있는 console.log(함수)
   const [title, setTitle] = useState(props.title);
   // 클릭 시 하나만 찍힘
-  console.log('ExpenseItem evaluated by React');
 
   // let title = props.title;
 

@@ -22,7 +22,8 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        <ExpenseItem
+        {/* 정적 할당 */}
+        {/* <ExpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
           date={props.items[0].date}
@@ -41,7 +42,17 @@ const Expenses = (props) => {
           title={props.items[3].title}
           amount={props.items[3].amounts}
           date={props.items[3].date}
-        />
+        /> */}
+
+        {/* 동적 할당 */}
+        {props.items.map((expense) => (
+          <ExpenseItem
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+            key={expense.id}
+          />
+        ))}
       </Card>
     </div>
   );

@@ -13,7 +13,12 @@ const Expenses = (props) => {
     // console.log('Expenses.js');
     // console.log(selectedYear);
     setFilteredYear(selectedYear);
+    // true, false 반환하는 filter 메소드
   };
+  const filteredExpenses = props.items.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <div>
       <Card className="expenses">
@@ -44,8 +49,9 @@ const Expenses = (props) => {
           date={props.items[3].date}
         /> */}
 
-        {/* 동적 할당 */}
-        {props.items.map((expense) => (
+        {/* 동적 할당 모든 아이템은 고유 식별자가 있어야 함 */}
+        {/* {props.items.map((expense) => ( */}
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             title={expense.title}
             amount={expense.amount}
@@ -53,6 +59,15 @@ const Expenses = (props) => {
             key={expense.id}
           />
         ))}
+        {/* id가 없을 때!! 장려되는 방법은 아님 */}
+        {/* {props.items.map((expense, index) => (
+          <ExpenseItem
+          key={expense.index}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+          />
+        ))} */}
       </Card>
     </div>
   );
